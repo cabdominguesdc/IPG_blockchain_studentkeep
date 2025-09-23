@@ -1,0 +1,16 @@
+{
+  "name": "studentkeep-chaincode",
+  "version": "1.0.0",
+  "description": "StudentKeep chaincode - Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "StudentKeep",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fabric-shim": "^2.5.0",
+    "fabric-contract-api": "^2.5.0",
+    "sha.js": "^2.4.11"
+  }
+}
