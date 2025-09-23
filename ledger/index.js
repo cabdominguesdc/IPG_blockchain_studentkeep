@@ -14,10 +14,10 @@ class StudentKeepContract extends Contract {
     async InitLedger(ctx) {
         const assets = [
             {
-                assetId: 'asset0',
-                serialHash: this._sha256('SERIAL-0000'),
-                make: 'ExampleMake',
-                model: 'ExModel',
+                assetId: '2025-01',
+                serialHash: this._sha256('NUMERO SERIE - FF5600P00-2025'),
+                make: 'ASUS',
+                model: 'F50-30',
                 status: 'RECEIVED',
                 location: 'HubA',
                 ownerType: 'HUB',
