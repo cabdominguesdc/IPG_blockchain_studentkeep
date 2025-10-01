@@ -1,0 +1,19 @@
+# package
+
+peer lifecycle chaincode package equipment.tar.gz --path ./chaincode/equipment-contract --lang node --label equipment_1
+
+# install (em cada peer)
+
+peer lifecycle chaincode install equipment.tar.gz
+
+# query installed to get packageID
+
+peer lifecycle chaincode queryinstalled
+
+# approve (por cada org admin)
+
+peer lifecycle chaincode approveformyorg --channelID sharedchannel --name equipmentcc --version 1.0 --package-id <PACKAGE_ID> --sequence 1 --orderer orderer.example.com:7050 --tls --cafile $ORDERER_CA
+
+# commit (uma vez aprovado por orgs suficientes)
+
+peer lifecycle chaincode commit -o orderer.example.com:7050 --channelID sharedchannel --name equipmentcc --version 1.0 --sequence 1 --peerAddresses peer0.manager:7051 --tlsRootCertFiles $PEER0_MANAGER_CA

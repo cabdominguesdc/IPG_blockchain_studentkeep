@@ -29,6 +29,35 @@ o	Usar Private Data Collections (PDC) para dados pessoais dos beneficiários (ac
 •	Chaincode: smart contract (Node.js) que modela o ciclo de vida do equipamento e aplica regras de autorização (baseado em atributos dos certificados).
 
 •	Aplicações Web:
+
 o	Portal técnico (técnicos de reparação) — web app para registar diagnóstico, reparo, testes. Com versão mobile responsiva.
+
 o	Portal beneficiário — solicitar / aceitar equipamento (com PII protegida). Com versão mobile responsiva.
+
 o	Portal administrador — gestão de identidades, auditoria, relatórios.
+
+
+Cada organização idealmente corre o seu peer e CA na sua infraestrutura (ouchezcloud/VMs/Kubernetes).
+
+Abrir portas necessárias (gRPC TLS) entre peers e orderers com VPN / VPC peering para segurança.
+
+Monitorização: Prometheus (Fabric metrics exporter) + Grafana.
+
+Logging: centralizar logs (ELK/Graylog).
+
+Testes: e2e com fabric-samples como referência.
+
+
+Workflow para chaincode:
+
+push para branch => Jenkins Pipeline:
+
+Instalar dependências (npm)
+
+Lint & unit tests
+
+Package chaincode (tar.gz)
+
+(Opcional) Fazer peer lifecycle chaincode install nos peers de dev (se CI tiver acesso)
+
+Mantém scripts/ para packageChaincode.sh, installChaincode.sh, approveAndCommit.sh.

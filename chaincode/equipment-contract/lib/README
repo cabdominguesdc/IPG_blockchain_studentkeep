@@ -1,0 +1,3 @@
+Para dados sensíveis (nome, NIF do beneficiário), armazenar em Private Data Collections (PDC). O método AssignToBeneficiary pode também escrever uma coleção privada com chave eqId com dados da pessoa.
+
+Usa ctx.clientIdentity.getAttributeValue('role') para ABAC.

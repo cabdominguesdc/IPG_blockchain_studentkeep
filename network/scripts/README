@@ -1,0 +1,11 @@
+script register-enroll.sh (simplificado) para criar o admin e o peer identity numa org:
+Para cada user (técnico, donor, beneficiary)  usar fabric-ca-client register para criar identity (e atributos). 
+Depois enroll para gerar o MSP e certificados.
+
+Exemplo de atributos no register para aplicar ABAC:
+fabric-ca-client register --id.name tech1 --id.secret techpw --id.type user --id.attrs 'role:technician:ecert,org:IPSS1:ecert' -u ${CA_URL}
+
+
+Cada peer precisa do seu core.yaml e MSP.
+Usa peer channel create (apenas uma org com admin) e peer channel join para os outros peers.
+Usa peer channel update para adicionar anchors per org.

@@ -1,0 +1,9 @@
+Identidade directa: cada técnico/beneficiário recebe um certificado (em wallet) e liga-se ao network Gateway com essa identidade (ideal para técnicos e admins).
+
+Proxy app (para beneficiários finais que não podem receber certificados): a app web do serviço (backend) autentica o utilizador via username/password e submete transacções ao Fabric com uma identidade de aplicação (ex.: appProxy) — atenção: isto exige controlo rigoroso de autorização na app e gravação de PII em PDC.
+
+Para beneficiários (muitos e dinâmicos), recomendo proxy app + PDC: a app valida o utilizador, grava os seus dados PII na PDC (script server side) e regista a atribuição com chaincode.
+
+identity object contém qual identidade do wallet usar. Em produção, preferir mecanismos mais robustos (JWT + RBAC) e não enviar identity na request.
+
+Para cada técnico, terás um par de certs armazenado em Wallets do servidor (ou em HSM/secrets vault).
